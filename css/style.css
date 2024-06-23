@@ -1,15 +1,113 @@
 * {
     margin: 0;
     padding: 0;
-}
-
-header,
-main,
-footer,
-nav,
-aside,
-section,
-article,
-div {
+    font-family: "Roboto";
+    letter-spacing: 0.01em;
+  }
+  
+  header,
+  main,
+  footer,
+  nav,
+  aside,
+  section,
+  article,
+  div {
     display: block;
-}
+  }
+  
+  .menu-icon {
+    width: 25px;
+    height: 25px;
+  }
+  
+  .search-icon {
+    width: 22px;
+    height: 22px;
+  }
+  
+  .logo-image {
+    width: auto;
+    height: 40px;
+  }
+  
+  nav {
+    padding: 14px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+  }
+  
+  .container {
+    max-width: 1200px;
+  
+    margin: 10px auto;
+    padding: 10px 20px;
+  }
+  
+  h4.title {
+    font-size: 20px;
+    font-weight: 400;
+  }
+  
+  h5.title {
+    font-size: 18px;
+    font-weight: 400;
+  }
+  
+  .rectangle {
+    margin-top: 15px;
+    border-radius: 20px;
+    padding: 20px;
+    background: linear-gradient(
+      177.35deg,
+      #779f71 2.21%,
+      #d8e4d6 131.11%,
+      #ffffff 282.1%
+    );
+    display: grid;
+    grid-template-columns: auto 120px;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .rectangle .title {
+    color: white;
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+  
+  .rectangle .description {
+    color: white;
+    font-weight: 300;
+    font-size: 16px;
+    margin-bottom: 13px;
+  }
+  
+  .rectangle img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .white-button {
+    background: white;
+    appearance: none;
+    padding: 7px 18px;
+    border-radius: 100px;
+    border: none;
+  }
+  
+  @media screen and (min-width: 600px) {
+    .rectangle img {
+      max-width: 150px;
+      max-height: 150px;
+    }
+  }
+  
+  @media screen and (max-width: 600px) {
+    .rectangle .description {
+      font-size: 13.5px;
+    }
+  }
+  
