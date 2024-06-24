@@ -17,21 +17,50 @@
 
   <body>
     <nav>
-      <img alt="menu" src="assets/menu-icon.svg" class="menu-icon" />
+      <!-- <img alt="menu" src="assets/menu-icon.svg" class="menu-icon" /> -->
 
       <img
         alt="logo"
         src="assets/logo.png"
-        style="justify-self: center"
+        style="justify-self: start"
         class="logo-image"
       />
 
-      <img
-        alt="search"
-        src="assets/search-icon.svg"
-        class="search-icon"
-        style="justify-self: end"
-      />
+      <div class="nav-list">
+        <ul>
+          <li>
+            <a href="/my-voluntree">
+              <p>My Volunteer</p>
+            </a>
+          </li>
+
+          <li>
+            <a href="/opportunities">
+              <p>Opportunities</p>
+            </a>
+          </li>
+
+          <li>
+            <a href="/" class="">
+              <p>Home</p>
+            </a>
+          </li>
+
+          <li>
+            <a href="/favorite">
+              <p>Favorite</p>
+            </a>
+          </li>
+
+          <li>
+            <a href="/profile">
+              <p>My Profile</p>
+            </a>
+          </li>
+        </ul>
+
+        <img alt="search" src="assets/search-icon.svg" class="search-icon" />
+      </div>
     </nav>
 
     <div class="container">
@@ -97,45 +126,41 @@
           </div>
         </div>
       </div>
-
-      <footer>
-        <a href="/my-voluntree">
-          <img
-            src="assets/book-icon.svg"
-            alt="My Voluntree"
-            class="footer-icon"
-          />
-          <p>My Volunteer</p>
-        </a>
-
-        <a href="/opportunities">
-          <img
-            src="assets/tree-icon.svg"
-            alt="Opportunities"
-            class="footer-icon"
-          />
-          <p>Opportunities</p>
-        </a>
-
-        <a href="/">
-          <img src="assets/home-icon.svg" alt="Home" class="footer-icon" />
-          <p>Home</p>
-        </a>
-
-        <a href="/favorite">
-          <img src="assets/heart-icon.svg" alt="Favorite" class="footer-icon" />
-          <p>Favorite</p>
-        </a>
-
-        <a href="/profile">
-          <img
-            src="assets/profile-icon.svg"
-            alt="Profile"
-            class="footer-icon"
-          />
-          <p>My Profile</p>
-        </a>
-      </footer>
     </div>
+
+    <footer>
+      <a href="/my-voluntree">
+        <img
+          src="assets/book-icon.svg"
+          alt="My Voluntree"
+          class="footer-icon"
+        />
+        <p>My Volunteer</p>
+      </a>
+
+      <a href="/opportunities">
+        <img
+          src="assets/tree-icon.svg"
+          alt="Opportunities"
+          class="footer-icon"
+        />
+        <p>Opportunities</p>
+      </a>
+
+      <a href="/" class="">
+        <img src="assets/home-icon.svg" alt="Home" class="footer-icon" />
+        <p>Home</p>
+      </a>
+
+      <a href="/favorite">
+        <img src="assets/heart-icon.svg" alt="Favorite" class="footer-icon" />
+        <p>Favorite</p>
+      </a>
+
+      <a href="/profile">
+        <img src="assets/profile-icon.svg" alt="Profile" class="footer-icon" />
+        <p>My Profile</p>
+      </a>
+    </footer>
   </body>
 </html>
