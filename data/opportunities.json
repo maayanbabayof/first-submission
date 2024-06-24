@@ -3,7 +3,7 @@
     "cards": [
       {
         "id": 1,
-        "image": "image1.jpeg",
+        "image": "images/image1.jpeg",
         "title": "משק דרוקר- חווה גלילית",
         "region": "North Israel",
         "city": "Galilee",
@@ -12,7 +12,7 @@
       },
       {
         "id": 2,
-        "image": "image2.jpg",
+        "image": "images/image2.jpg",
         "title": "Berry Plantations-משק רשף",
         "region": "North Israel",
         "city": "Golan Heights",
@@ -21,7 +21,7 @@
       },
       {
         "id": 3,
-        "image": "image3.jpg",
+        "image": "images/image3.jpg",
         "title": "Apple picking",
         "region": "North Israel",
         "city": "Hashfela אלדר",
@@ -30,7 +30,7 @@
       },
       {
         "id": 4,
-        "image": "image4.jpg",
+        "image": "images/image4.jpg",
         "title": "אלי רצון ממושב עזריאל",
         "region": "Central Israel",
         "city": "Hefer Valley",
@@ -39,7 +39,7 @@
       },
       {
         "id": 5,
-        "image": "image5.webp",
+        "image": "images/image5.webp",
         "title": "משק אלטשור",
         "region": "Central Israel",
         "city": "The Costal plain",
@@ -48,7 +48,7 @@
       },
       {
         "id": 6,
-        "image": "image6.jpg",
+        "image": "images/image6.jpg",
         "title": "Networks For Growing Brries",
         "region": "Central Israel",
         "city": "Hashfla תעוז",
@@ -57,8 +57,8 @@
       },
       {
         "id": 7,
-        "image": "image7.png",
-        "title": "Networks For Growing Brries", //change
+        "image": "images/image7.png",
+        "title": "Networks For Growing Brries",
         "region": "Central Israel",
         "city": "Hashfla תעוז",
         "rating": "4.1★",
@@ -66,8 +66,8 @@
       },
       {
         "id": 8,
-        "image": "image2.jpg",
-        "title": "Networks For Growing Brries", //change
+        "image": "images/image2.jpg",
+        "title": "Networks For Growing Brries",
         "region": "Central Israel",
         "city": "Hashfla תעוז",
         "rating": "4.1★",

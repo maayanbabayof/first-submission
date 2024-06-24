@@ -232,3 +232,9 @@ footer a img {
   width: 20px;
   height: 20px;
 }
+
+.img-fluid .rounded-start {
+  width: 100%;
+  height: auto;
+}
+
