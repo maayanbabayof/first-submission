@@ -233,8 +233,24 @@ footer a img {
   height: 20px;
 }
 
-.img-fluid .rounded-start {
+.card .img-fluid {
   width: 100%;
-  height: auto;
+  height: 200px;
+  object-fit: cover;
 }
 
+#cardsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 50px;
+}
+
+.card {
+  width: 300px;
+  cursor: pointer;
+}
+
+.card p {
+  width: 100%;
+}

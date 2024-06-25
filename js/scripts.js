@@ -24,7 +24,7 @@ function createAndAppendCards(cards) {
                 <div>
                     <img src="${card.image}" class="img-fluid rounded-start" alt="${card.title}">
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-12">
                     <div class="card-body">
                         <h5 class="card-title">${card.title}</h5>
                         <p class="card-text">${card.region}, ${card.city}</p>
@@ -34,6 +34,11 @@ function createAndAppendCards(cards) {
                 </div>
             </div>
         `;
+
+        cardElement.addEventListener("click", () => {
+            window.location.href = `object.html?id=${card.id}`;
+        });
+
         cardsContainer.appendChild(cardElement);
     });
 }
