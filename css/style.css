@@ -29,9 +29,14 @@ div {
 .logo-image {
   width: auto;
   height: 40px;
+  justify-self: start;
 }
 
-nav {
+.image-wrapper {
+  justify-self: end;
+}
+
+header {
   padding: 14px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   display: grid;
@@ -39,29 +44,33 @@ nav {
   align-items: center;
 }
 
-.nav-list {
+nav {
   justify-self: end;
   display: flex;
   gap: 20px;
   align-items: center;
 }
 
-.nav-list ul {
+nav ul {
   display: flex;
   gap: 20px;
   list-style-type: none;
 }
 
-.nav-list ul a {
+nav ul a {
   appearance: none;
   text-decoration: none;
   color: black;
 }
 
+nav ul a p,
+nav ul {
+  margin-bottom: 0px !important;
+}
+
 .container {
   max-width: 1000px;
-
-  margin: 10px auto;
+  margin: 10px auto !important;
   padding: 10px 20px;
 }
 
@@ -127,6 +136,9 @@ h5.title {
     display: none !important;
     opacity: 0;
   }
+  body {
+    margin-bottom: 20px;
+  }
 }
 
 @media screen and (max-width: 800px) {
@@ -134,11 +146,19 @@ h5.title {
     font-size: 13.5px;
   }
 
-  .nav-list ul {
+  nav ul {
     display: none;
   }
   body {
-    margin-bottom: 100px;
+    margin-bottom: 100px !important;
+  }
+
+  .form-container {
+    padding: 10px;
+  }
+
+  header {
+    grid-template-columns: 2fr 1fr;
   }
 }
 
@@ -177,28 +197,32 @@ h5.title {
   gap: 20px;
   box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
   border-radius: 25px;
-  max-width: 400px;
+  max-width: 380px;
+  min-width: 380px;
 }
 
-.opportunity-div:nth-child(1) {
-  /* padding: 10px; */
+.opportunity-div div {
+  padding-right: 10px;
   font-size: 14px;
 }
 
 .opportunity-div .title {
   font-weight: 500;
   margin-bottom: 5px;
+  font-size: 14px;
 }
 
 .opportunity-div .description {
   font-weight: 300;
+  font-size: 14px;
+  margin-bottom: 2px;
 }
 
 .opportunity-div img {
   aspect-ratio: 1;
   object-fit: cover;
   border-radius: 25px;
-  height: 140px;
+  height: 155px;
 }
 
 footer {
@@ -215,7 +239,7 @@ footer {
 }
 
 footer a {
-  font-size: 13px;
+  font-size: 12px;
   color: black;
   text-decoration: none;
   display: flex;
@@ -224,11 +248,94 @@ footer a {
   gap: 4px;
 }
 
+footer a p {
+  margin-bottom: 0px;
+}
+
 .active {
   color: #779f71 !important;
 }
 
 footer a img {
-  width: 20px;
-  height: 20px;
+  width: 23px;
+  height: 23px;
+}
+
+.form-container {
+  border-radius: 15px;
+  background: rgba(0, 0, 0, 0.05);
+  padding: 18px;
+}
+
+.form-container h3 {
+  font-size: 18px;
+  margin-top: 25px !important;
+  margin-bottom: 20px !important;
+  color: #529b47;
+  text-align: center;
+}
+
+form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+input {
+  font-size: 13px;
+}
+
+.px-25 {
+  padding-left: 10px !;
+  padding-right: 10px !important;
+}
+
+.py-25 {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+
+.user-welcome {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mt-7 {
+  margin-top: 30px;
+}
+.mb-4 {
+  margin-bottom: 20px;
+}
+
+.available-select {
+  margin-bottom: -7px !important;
+}
+
+.checkbox-input {
+  margin-right: 10px !important;
+  margin-left: 0px !important;
+}
+
+.user-profile {
+  width: 40px;
+  height: 40px;
+  border-radius: 100px;
+  object-fit: cover;
+  object-position: top;
+}
+
+.submit-button {
+  background-color: #779f71;
+  border-color: #779f71;
+  border: none;
+  color: white;
+  padding: 7px;
+}
+
+.delete-button {
+  border: none;
+  padding: 4px 10px;
+  border-radius: 12px;
+  margin-top: 4px;
 }
