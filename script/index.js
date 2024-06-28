@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const img = document.createElement("img");
         img.alt = "image";
-        img.src = "images/" + card.image;
+        img.src =  card.image;
 
         const infoDiv = document.createElement("div");
 
