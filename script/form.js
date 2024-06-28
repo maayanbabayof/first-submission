@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var form = document.getElementById("form");
 
   form.onsubmit = function (event) {
-    event.preventDefault(); // Prevent default form submission
+    event.preventDefault(); 
 
     var formData = {};
     var inputs = form.querySelectorAll("input, select");
@@ -14,6 +14,9 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("PUSH opportunity/new");
     console.log(formData);
 
-    alert("מודים לך על הרשמתך להתנדבות!");
+    var myModal = new bootstrap.Modal(document.getElementById('thankYouModal'), {
+      keyboard: false
+    });
+    myModal.show();
   };
 });
