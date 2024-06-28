@@ -157,8 +157,17 @@ h5.title {
     padding: 10px;
   }
 
-  header {
-    grid-template-columns: 2fr 1fr;
+  .user-welcome h5,
+  .user-profile {
+    display: none;
+  }
+
+  .user-welcome {
+    justify-content: end;
+  }
+
+  .logo-image {
+    transform: translateX(50%);
   }
 }
 
@@ -239,7 +248,7 @@ footer {
 }
 
 footer a {
-  font-size: 12px;
+  font-size: 11px;
   color: black;
   text-decoration: none;
   display: flex;
