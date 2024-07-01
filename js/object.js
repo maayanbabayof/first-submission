@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(data => {
             const card = data.cards.find(card => card.id == cardId);
             if (card) {
-                displayCard(card);
+                displayCardContent(card);
             } else {
                 console.error("Card not found");
             }
@@ -15,18 +15,17 @@ document.addEventListener("DOMContentLoaded", function () {
         .catch(error => console.error("Error fetching data:", error));
 });
 
-function displayCard(card) {
+function displayCardContent(card) {
     const objectContainer = document.getElementById("objectContainer");
-    const cardElement = document.createElement("div");
-    cardElement.className = "card";
-    cardElement.innerHTML = `
-        <img src="${card.image}" class="card-img-top" alt="${card.title}">
-        <div class="card-body">
-            <h5 class="card-title">${card.title}</h5>
-            <p class="card-text">${card.region}, ${card.city}</p>
-            <p class="card-text">Rating: ${card.rating}</p>
-            <p class="card-text">Date: ${card.date}</p>
+    objectContainer.innerHTML = `
+        <div class="card-content mx-auto"> <!-- Center and add margin to the top -->
+            <img src="${card.image}" class="card-img-top" alt="${card.title}">
+            <div class="card-body">
+                <h5 class="card-title">${card.title}</h5>
+                <p class="card-text">${card.region}, ${card.city}</p>
+                <p class="card-text">Rating: ${card.rating}</p>
+                <p class="card-text">Date: ${card.date}</p>
+            </div>
         </div>
     `;
-    objectContainer.appendChild(cardElement);
 }

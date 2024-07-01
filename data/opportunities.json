@@ -12,7 +12,7 @@
       },
       {
         "id": 2,
-        "image": "images/image2.jpg",
+        "image": "images/image2.jpeg",
         "title": "Berry Plantations-משק רשף",
         "region": "North Israel",
         "city": "Golan Heights",
@@ -49,9 +49,9 @@
       {
         "id": 6,
         "image": "images/image6.jpg",
-        "title": "Networks For Growing Brries",
+        "title": "Cherry picking",
         "region": "Central Israel",
-        "city": "Hashfla תעוז",
+        "city": "Hashfla יקום",
         "rating": "4.1★",
         "date": "28 Jan 2024"
       },
@@ -66,10 +66,10 @@
       },
       {
         "id": 8,
-        "image": "images/image2.jpg",
-        "title": "Networks For Growing Brries",
+        "image": "images/image8.jpg",
+        "title": "Lettuce crops",
         "region": "Central Israel",
-        "city": "Hashfla תעוז",
+        "city": "Hashfla געש",
         "rating": "4.1★",
         "date": "28 Jan 2024"
       }
