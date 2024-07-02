@@ -151,6 +151,10 @@ h5.title {
     opacity: 0;
   }
   
+  footer a.active{
+    color: #779f71 !important;
+  }
+
   body {
     margin-bottom: 20px;
   }
@@ -164,6 +168,7 @@ h5.title {
   nav ul {
     display: none;
   }
+
   body {
     margin-bottom: 100px !important;
   }
@@ -297,7 +302,7 @@ footer a p {
   .navbar-nav {
     gap: 20px;
     flex-direction: row;
-
+    display: block;
   }
 }
 

@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const card = data.cards.find(card => card.id == cardId);
             if (card) {
                 displayCardContent(card);
-                setUpNavLinks(card);
+                setUpNavLinks(card); // Move inside the fetch.then block
                 console.log(card);
             } else {
                 console.error("Card not found");
@@ -32,16 +32,12 @@ function displayCardContent(card) {
     `;
 }
 
-function setActiveLink(activeLinkId) {
-    document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+function setActiveLink(linkId) {
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
         link.classList.remove('active');
-        link.style.fontWeight = 'normal';
-        link.style.color = '';
     });
-    const activeLink = document.getElementById(activeLinkId);
-    activeLink.classList.add('active');
-    activeLink.style.fontWeight = 'bold';
-    activeLink.style.color = 'green';
+    document.getElementById(linkId).classList.add('active');
 }
 
 function displayContent(content) {
@@ -64,6 +60,7 @@ function setUpNavLinks(card) {
     <p>My friends and I came to volunteer in order to experience Israeli agriculture and on the way to enjoy a stay in a variety of different places in the country, David the farmer was great and hosted us in a wonderful way, we learned a lot from him, thank you !</p>
     <a class="btn btn-primary" href="/form.html" role="button">Apply</a>
     `;
+    
     document.getElementById('overviewLink').addEventListener('click', (e) => {
         e.preventDefault();
         setActiveLink('overviewLink');
@@ -81,17 +78,7 @@ function setUpNavLinks(card) {
         setActiveLink('locationLink');
         displayContent(card.locationContent || 'This is the location content.');
     });
-    
-displayContent(command);
-    setActiveLink('overviewLink');
-    displayContent(command);
-}
 
-setUpNavLinks(card);
-function setActiveLink(linkId) {
-    const navLinks = document.querySelectorAll('.nav-link');
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-    });
-    document.getElementById(linkId).classList.add('active');
+    setActiveLink('overviewLink'); // Set default active link
+    displayContent(command); // Display default content
 }
