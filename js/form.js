@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var form = document.getElementById("form");
 
   form.onsubmit = function (event) {
-    event.preventDefault(); 
+    event.preventDefault();
 
     var formData = {};
     var inputs = form.querySelectorAll("input, select");

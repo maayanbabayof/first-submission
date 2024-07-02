@@ -45,7 +45,6 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch((error) => console.error("Error fetching data:", error));
 
-  // Highlight active navigation link
   const currentPath = window.location.pathname;
   const navLinks = document.querySelectorAll('.nav-link');
 
