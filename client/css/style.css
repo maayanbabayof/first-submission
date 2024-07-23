@@ -16,6 +16,10 @@ div {
   display: block;
 }
 
+body {
+  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
 .menu-icon {
   width: 25px;
   height: 25px;

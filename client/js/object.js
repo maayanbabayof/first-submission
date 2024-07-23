@@ -58,7 +58,7 @@ function setUpNavLinks(card) {
     <div>Jan 2024</div>
     <img src="images/blackStars.png" alt="blackStars"/>
     <p>My friends and I came to volunteer in order to experience Israeli agriculture and on the way to enjoy a stay in a variety of different places in the country, David the farmer was great and hosted us in a wonderful way, we learned a lot from him, thank you !</p>
-    <a class="btn btn-primary" href="/form.html" role="button">Apply</a>
+    <a class="btn btn-primary" href="./form.html" role="button">Apply</a>
     `;
     
     document.getElementById('overviewLink').addEventListener('click', (e) => {
