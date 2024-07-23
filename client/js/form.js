@@ -1,6 +1,6 @@
-import Swal from 'sweetalert2';
-
 document.addEventListener("DOMContentLoaded", function () {
+  console.log("DOM fully loaded and parsed"); // Add this line to check if the script is running
+
   var form = document.getElementById("form");
 
   form.onsubmit = function (event) {
