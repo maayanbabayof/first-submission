@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    fetch("/opportunities")
+    fetch("http://localhost:3000/api/opportunities/all")
         .then(response => response.json())
         .then(data => {
             setTitle("Opportunities");
@@ -36,7 +36,7 @@ function createAndAppendCards(cards) {
         `;
 
         cardElement.addEventListener("click", () => {
-            window.location.href = `object.html?id=${card.opportunityID}`;
+            window.location.href = `object.html?id=${card.opportunity}`;
         });
 
         cardsContainer.appendChild(cardElement);

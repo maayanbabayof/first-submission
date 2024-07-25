@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  console.log("DOM fully loaded and parsed"); // Add this line to check if the script is running
+  console.log("DOM fully loaded and parsed");
 
   var form = document.getElementById("form");
 
