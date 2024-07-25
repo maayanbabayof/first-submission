@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
-    fetch("data/opportunities.json")
+    fetch("/opportunities")
         .then(response => response.json())
         .then(data => {
-            setTitle(data.title);
-            createAndAppendCards(data.cards);
+            setTitle("Opportunities");
+            createAndAppendCards(data);
         })
         .catch(error => console.error("Error fetching data:", error));
 });
@@ -13,7 +13,7 @@ function setTitle(title) {
 }
 
 function createAndAppendCards(cards) {
-    const cardsContainer = document.getElementById("cardsContainer");
+    const cardsContainer = document.querySelector("#cardsContainer .row");
 
     cards.forEach(card => {
         const cardElement = document.createElement("div");
@@ -21,14 +21,14 @@ function createAndAppendCards(cards) {
         cardElement.style.maxWidth = "540px";
         cardElement.innerHTML = `
             <div class="row g-0">
-                <div>
-                    <img src="${card.image}" class="img-fluid rounded-start" alt="${card.title}">
+                <div class="col-md-4">
+                    <img src="${card.img}" class="img-fluid rounded-start" alt="${card.title}">
                 </div>
-                <div class="col-md-12">
+                <div class="col-md-8">
                     <div class="card-body">
                         <h5 class="card-title">${card.title}</h5>
                         <p class="card-text">${card.region}, ${card.city}</p>
-                        <p class="card-text">Rating: ${card.rating}</p>
+                        <p class="card-text">Rating: ${card.rate}</p>
                         <p class="card-text"><small class="text-body-secondary">Date: ${card.date}</small></p>
                     </div>
                 </div>
@@ -36,7 +36,7 @@ function createAndAppendCards(cards) {
         `;
 
         cardElement.addEventListener("click", () => {
-            window.location.href = `object.html?id=${card.id}`;
+            window.location.href = `object.html?id=${card.opportunityID}`;
         });
 
         cardsContainer.appendChild(cardElement);
