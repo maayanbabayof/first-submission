@@ -17,7 +17,9 @@ div {
 }
 
 body {
-  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
 }
 
 .menu-icon {
@@ -162,6 +164,10 @@ h5.title {
   body {
     margin-bottom: 20px;
   }
+
+  .cardsGrid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
 
 @media screen and (max-width: 800px) {
@@ -193,6 +199,10 @@ h5.title {
   .user-welcome.logo-image {
     transform: translateX(50%);
     justify-content: center;
+  }
+
+  .cardsGrid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -397,6 +407,12 @@ input {
 .card {
   width: 300px;
   cursor: pointer;
+}
+
+.card-width {
+  max-width: 540px !important;
+  min-width: 330px !important;
+  overflow: hidden;
 }
 
 .card p {
@@ -691,4 +707,9 @@ input {
   border-radius: 5px;
   font-size: 13px;
   text-decoration: none;
+}
+
+.cardsGrid {
+  display: grid;
+  gap: 15px;
 }
