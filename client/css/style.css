@@ -150,8 +150,8 @@ h5.title {
     display: none !important;
     opacity: 0;
   }
-  
-  footer a.active{
+
+  footer a.active {
     color: #779f71 !important;
   }
 
@@ -177,7 +177,8 @@ h5.title {
     padding: 10px;
   }
 
-  .user-welcome h5, .user-profile {
+  .user-welcome h5,
+  .user-profile {
     display: none;
   }
 
@@ -402,7 +403,6 @@ input {
   .card {
     height: 50vh;
   }
-
 }
 
 #containerObj {
@@ -458,7 +458,8 @@ input {
   }
 }
 
-.reviews ,.read{
+.reviews,
+.read {
   color: blue;
 }
 
@@ -473,4 +474,217 @@ input {
   background-color: #529b47;
   border-color: #529b47;
   color: white;
+}
+
+.register-page {
+  max-width: 300px;
+  margin: 40px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.register-page form,
+.login-page form {
+  gap: 5px;
+  margin-top: 12px;
+}
+
+.register-page form input[type="email"],
+.register-page form input[type="text"],
+.register-page form input[type="password"] {
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.register-page select {
+  padding: 8px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.register-page form input[type="submit"] {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background: #337ab7;
+  color: white;
+  cursor: pointer;
+}
+
+.register-page form input[type="submit"]:hover {
+  background: #286090;
+}
+
+.mt-5 {
+  margin-top: 20px;
+}
+
+.mt-3 {
+  margin-top: 12px;
+}
+
+.login-page {
+  max-width: 300px;
+  margin: 40px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.login-page form input[type="email"],
+.login-page form input[type="text"],
+.login-page form input[type="password"] {
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.login-page form input[type="submit"] {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background: #5cb85c;
+  color: white;
+  cursor: pointer;
+}
+
+.login-page form input[type="submit"]:hover {
+  background: #4cae4c;
+}
+
+.new-opportunity {
+  display: flex;
+  flex-direction: column;
+  margin: 20px auto;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  background: #f5f5f5;
+  gap: 0px;
+  max-width: 90%;
+}
+
+.new-opportunity-title {
+  text-align: center;
+  color: #3399cc;
+}
+
+.form-services {
+  margin: 5px 0px 15px 0px;
+}
+.form-services button {
+  padding: 4px;
+  margin-top: 5px;
+}
+
+.new-opportunity input,
+.new-opportunity select,
+.new-opportunity textarea,
+.new-opportunity .submit-button {
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.new-opportunity .submit-button {
+  background-color: #5cb85c;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#my-opportunities-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-bottom: 20px;
+  gap: 15px;
+}
+
+.opportunity-wrapper {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  position: relative;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  text-decoration: none;
+}
+
+.opportunity-wrapper img {
+  height: 120px;
+  width: 120px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 10px 0 0 10px;
+}
+
+.opportunity-wrapper .date {
+  font-size: 13px;
+  margin: 0;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.opportunity-wrapper .approved {
+  padding: 5px 8px;
+  background-color: #4caf50;
+  color: white;
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+  border-radius: 6px;
+  width: fit-content;
+  font-size: 11px;
+  letter-spacing: 0.01em;
+}
+
+.opportunity-wrapper .flex {
+  display: flex;
+  align-items: center;
+  column-gap: 4px;
+}
+
+.opportunity-wrapper .declined {
+  padding: 5px 8px;
+  background-color: #d33b3b;
+  color: white;
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+  border-radius: 6px;
+  width: fit-content;
+  font-size: 11px;
+  letter-spacing: 0.01em;
+}
+
+.opportunity-wrapper .pending {
+  padding: 5px 8px;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+  border-radius: 6px;
+  width: fit-content;
+  font-size: 11px;
+  letter-spacing: 0.01em;
+}
+
+.opportunity-wrapper svg {
+  position: absolute;
+  right: 10px;
+  transform: rotate(180deg);
+}
+
+.add-opportunity-button {
+  padding: 8px 12px;
+  color: white;
+  background: #4cae4c;
+  border-radius: 5px;
+  font-size: 13px;
+  text-decoration: none;
 }
