@@ -1,14 +1,16 @@
 const express = require('express');
-// const usersRouter = require('./routes/users');
-// const vacationsRouter = require('./routes/vacations');
+const cors = require('cors');
+const usersRouter = require('./routes/users');
+const opportunitiesRouter = require('./routes/opportunities');
 require('dotenv').config();
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 
-// app.use('/api/users', usersRouter);
-// app.use('/api/vacations', vacationsRouter);
+app.use('/api/users', usersRouter);
+app.use('/api/opportunities', opportunitiesRouter);
 
 app.get('/', (req, res) => {
     res.status(200).send('Welcome to the API.');
