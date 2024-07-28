@@ -1,4 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
+  const user = JSON.parse(localStorage.getItem('user'));
+  if (user) {
+    document.getElementById('user-greeting').textContent = `Hello ${user.name}!`;
+    document.getElementById('user-profile-image').src = `${user.profilePicture}`;
+  }
   console.log("DOM fully loaded and parsed");
 
   var form = document.getElementById("form");

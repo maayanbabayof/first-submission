@@ -11,26 +11,17 @@ const pool = mysql.createPool({
     queueLimit: 0
 });
 
-const checkUserExists = async (name) => {
-    try {
-        const [rows, fields] = await pool.query('SELECT * FROM tbl_119_USER WHERE name = ?', [name]);
-        return rows.length > 0;
-    } catch (err) {
-        console.error('Error checking user:', err);
-        throw err;
-    }
-};
 
 const createUser = async (req, res) => {
-    const { name, password } = req.body;
+    const { email, name, password } = req.body;
 
     try {
-        const userExists = await checkUserExists(name);
+        const userExists = await checkUserExists(email);
         if (userExists) {
             return res.status(400).json({ error: 'User already exists.' });
         }
 
-        const [result] = await pool.query('INSERT INTO tbl_119_USER (name, password) VALUES (?, ?)', [name, password]);
+        const [result] = await pool.query('INSERT INTO tbl_119_USER (email, name, password) VALUES (?, ?, ?)', [email, name, password]);
         console.log('User created:', result);
 
         res.status(201).json({ message: 'User created successfully.' });
@@ -39,6 +30,7 @@ const createUser = async (req, res) => {
         res.status(500).json({ error: 'Failed to create user.' });
     }
 };
+
 
 const getAllUsers = async (req, res) => {
     try {
@@ -51,10 +43,10 @@ const getAllUsers = async (req, res) => {
 };
 
 const loginUser = async (req, res) => {
-    const { name, password } = req.body;
+    const { email, password } = req.body;
 
     try {
-        const [rows, fields] = await pool.query('SELECT * FROM tbl_119_USER WHERE name = ?', [name]);
+        const [rows, fields] = await pool.query('SELECT * FROM tbl_119_USER WHERE email = ?', [email]);
 
         if (rows.length === 0) {
             return res.status(404).json({ error: 'User not found.' });
@@ -65,10 +57,27 @@ const loginUser = async (req, res) => {
             return res.status(401).json({ error: 'Invalid password.' });
         }
 
-        res.status(200).json({ message: 'Login successful.' });
+        const userData = {
+            name: user.name,
+            email: user.email,
+            profilePicture: user.profilePicture // Assuming this column exists in your DB
+        };
+
+        res.status(200).json({ message: 'Login successful.', user: userData });
     } catch (err) {
         console.error('Error logging in:', err);
         res.status(500).json({ error: 'Failed to login.' });
+    }
+};
+
+
+const checkUserExists = async (email) => {
+    try {
+        const [rows, fields] = await pool.query('SELECT * FROM tbl_119_USER WHERE email = ?', [email]);
+        return rows.length > 0;
+    } catch (err) {
+        console.error('Error checking user:', err);
+        throw err;
     }
 };
 
