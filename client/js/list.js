@@ -1,9 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const user = JSON.parse(localStorage.getItem('user'));
-    if (user) {
-      document.getElementById('user-greeting').textContent = `Hello ${user.name}!`;
-      document.getElementById('user-profile-image').src = `${user.profilePicture}`;
-    }
+   
   fetch("http://localhost:3000/api/opportunities/all")
     .then((response) => response.json())
     .then((data) => {
