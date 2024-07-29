@@ -1,26 +1,49 @@
 document.addEventListener("DOMContentLoaded", function () {
-   
-  fetch("http://localhost:3000/api/opportunities/all")
-    .then((response) => response.json())
-    .then((data) => {
-      setTitle("Opportunities");
-      createAndAppendCards(data);
-    })
-    .catch((error) => console.error("Error fetching data:", error));
+    const user = JSON.parse(localStorage.getItem('user'));
+    console.log('User object from localStorage:', user);
+
+    if (user && user.role === 'farmer') {
+        console.log(`User ID: ${user.userID}`);
+
+        if (user.userID === undefined) {
+            displayNoOpportunitiesMessage();
+        } else {
+            fetch(`http://localhost:3000/api/opportunities/user/${user.userID}`)
+                .then((response) => response.json())
+                .then((data) => {
+                    setTitle("My Opportunities");
+                    console.log(data.length);  // Log the fetched data
+                    if (data.length === undefined) {
+                        displayNoOpportunitiesMessage();
+                    } else {
+                        createAndAppendCards(data);
+                    }
+                    showAddOpportunityButton();
+                })
+                .catch((error) => console.error("Error fetching data:", error));
+        }
+    } else {
+        // If the user is not a farmer or not logged in, redirect to a different page or show a message
+        setTitle("Opportunities");
+        fetch("http://localhost:3000/api/opportunities/all")
+            .then((response) => response.json())
+            .then((data) => createAndAppendCards(data))
+            .catch((error) => console.error("Error fetching data:", error));
+    }
 });
 
 function setTitle(title) {
-  document.getElementById("pageTitle").innerText = title;
+    document.getElementById("pageTitle").innerText = title;
 }
 
 function createAndAppendCards(cards) {
-  const cardsContainer = document.querySelector("#cardsContainer .cardsGrid");
+    const cardsContainer = document.querySelector("#cardsContainer .cardsGrid");
 
-  cards.forEach((card) => {
-    const cardElement = document.createElement("div");
-    cardElement.className = "card mb-3 card-width";
+    cards.forEach((card) => {
+        const cardElement = document.createElement("div");
+        cardElement.className = "card mb-3 card-width";
 
-    cardElement.innerHTML = `
+        cardElement.innerHTML = `
             <div class="col g-0">
                 <div class="col">
                     <img src="${card.img}" class="img-fluid rounded-start" alt="${card.title}">
@@ -36,10 +59,25 @@ function createAndAppendCards(cards) {
             </div>
         `;
 
-    cardElement.addEventListener("click", () => {
-      window.location.href = `object.html?id=${card.opportunity}`;
-    });
+        cardElement.addEventListener("click", () => {
+            window.location.href = `object.html?id=${card.opportunity}`;
+        });
 
-    cardsContainer.appendChild(cardElement);
-  });
+        cardsContainer.appendChild(cardElement);
+    });
+}
+
+function displayNoOpportunitiesMessage() {
+    const cardsContainer = document.querySelector("#cardsContainer");
+    cardsContainer.innerHTML = `
+        <div class="text-center">
+            <p>No opportunities exist.</p>
+            <a href="add-opportunity.html" class="btn btn-primary">Create a new opportunity</a>
+        </div>
+    `;
+}
+
+function showAddOpportunityButton() {
+    const addOpportunityBtnContainer = document.getElementById("addOpportunityBtnContainer");
+    addOpportunityBtnContainer.innerHTML = `<a href="add-opportunity.html" class="btn btn-primary">Add Opportunity</a>`;
 }

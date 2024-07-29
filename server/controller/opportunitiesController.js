@@ -65,9 +65,26 @@ const createOpportunity = async (req, res) => {
     }
 };
 
+const deleteOpportunity = async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const [result] = await pool.query('DELETE FROM tbl_119_OPPORTUNITY WHERE opportunity = ?', [id]);
+        if (result.affectedRows > 0) {
+            res.status(200).json({ message: 'Opportunity deleted successfully.' });
+        } else {
+            res.status(404).json({ error: 'Opportunity not found.' });
+        }
+    } catch (err) {
+        console.error('Error deleting opportunity:', err);
+        res.status(500).json({ error: 'Failed to delete opportunity.' });
+    }
+};
+
 module.exports = {
     checkRole,
     getOpportunities,
     getOpportunityById,
-    createOpportunity
+    createOpportunity,
+    deleteOpportunity
 };

@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const user = JSON.parse(localStorage.getItem('user')); // Fetch user data from localStorage
+  console.log(`User ID: ${user.userID}`);  // Log the userID to ensure it's defined
   if (user) {
     if (user.role === 'farmer') {
       console.log('farmer');

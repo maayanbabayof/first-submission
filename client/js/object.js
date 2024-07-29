@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-   
     const urlParams = new URLSearchParams(window.location.search);
     const cardId = urlParams.get('id');
 
@@ -19,6 +18,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function displayCardContent(card) {
     const objectContainer = document.getElementById("objectContainer");
+    const user = JSON.parse(localStorage.getItem('user'));
+
+    let buttons = '';
+    if (user && user.role === 'farmer') {
+        buttons = `
+            <div class="button-container text-center mt-4">
+                <a class="btn btn-primary mx-2" id="editBtn">Edit</a>
+                <a class="btn btn-success mx-2" id="saveBtn">Save</a>
+                <a class="btn btn-danger mx-2" id="deleteBtn">Delete</a>
+            </div>
+        `;
+    } else {
+        buttons = `
+            <div class="button-container text-center mt-4">
+                <a class="btn btn-primary mx-2" href="./form.html" role="button">Apply</a>
+            </div>
+        `;
+    }
+
     objectContainer.innerHTML = `
         <div class="card-content mx-auto">
             <img src="${card.img}" class="card-img-top" alt="${card.title}">
@@ -29,7 +47,44 @@ function displayCardContent(card) {
                 <p class="card-text">Date: ${card.date}</p>
             </div>
         </div>
+        ${buttons}
     `;
+
+    if (user && user.role === 'farmer') {
+        document.getElementById('editBtn').addEventListener('click', () => {
+            // Implement the edit functionality
+            console.log("Edit button clicked");
+        });
+
+        document.getElementById('saveBtn').addEventListener('click', () => {
+            // Implement the save functionality
+            console.log("Save button clicked");
+            // Redirect to list.html
+            window.location.href = './list.html';
+        });
+
+        document.getElementById('deleteBtn').addEventListener('click', () => {
+            // Implement the delete functionality
+            deleteOpportunity(card.opportunity);
+        });
+    }
+}
+
+function deleteOpportunity(opportunityId) {
+    fetch(`http://localhost:3000/api/opportunities/${opportunityId}`, {
+        method: 'DELETE'
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message) {
+                console.log(data.message);
+                // Optionally, redirect to another page or update the UI
+                window.location.href = './list.html';
+            } else {
+                console.error(data.error);
+            }
+        })
+        .catch(error => console.error('Error deleting opportunity:', error));
 }
 
 function setActiveLink(linkId) {
@@ -57,9 +112,8 @@ function setUpNavLinks(card) {
     <div>Jan 2024</div>
     <img src="images/blackStars.png" alt="blackStars"/>
     <p>${card.feedback}</p>
-    <a class="btn btn-primary" href="./form.html" role="button">Apply</a>
     `;
-    
+
     document.getElementById('overviewLink').addEventListener('click', (e) => {
         e.preventDefault();
         setActiveLink('overviewLink');
