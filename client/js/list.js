@@ -29,7 +29,7 @@ function createAndAppendCards(cards) {
                     <div class="card-body">
                         <h5 class="card-title">${card.title}</h5>
                         <p class="card-text">${card.region}, ${card.city}</p>
-                        <p class="card-text">Rating: ${card.rate}</p>
+                        <p class="card-text">Rating: ${card.rate}★</p>
                         <p class="card-text"><small class="text-body-secondary">Date: ${card.date}</small></p>
                     </div>
                 </div>

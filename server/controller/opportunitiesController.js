@@ -11,6 +11,18 @@ const pool = mysql.createPool({
     queueLimit: 0
 });
 
+const checkRole = (roles) => {
+    return (req, res, next) => {
+        const userRole = req.body.role; // Assuming the role is included in the request body or session
+
+        if (roles.includes(userRole)) {
+            next();
+        } else {
+            res.status(403).json({ error: 'Access denied.' });
+        }
+    };
+};
+
 const getOpportunities = async (req, res) => {
     try {
         console.log(pool.user, pool.password);
@@ -38,7 +50,24 @@ const getOpportunityById = async (req, res) => {
     }
 };
 
+const createOpportunity = async (req, res) => {
+    const { title, region, city, rate, img, date, reviews } = req.body;
+
+    try {
+        const [result] = await pool.query(
+            'INSERT INTO tbl_119_OPPORTUNITY (title, region, city, rate, img, date, reviews) VALUES (?, ?, ?, ?, ?, ?, ?)',
+            [title, region, city, rate, img, date, reviews]
+        );
+        res.status(201).json({ id: result.insertId, title, region, city, rate, img, date, reviews });
+    } catch (err) {
+        console.error('Error creating opportunity:', err);
+        res.status(500).json({ error: 'Failed to create opportunity.' });
+    }
+};
+
 module.exports = {
+    checkRole,
     getOpportunities,
-    getOpportunityById
+    getOpportunityById,
+    createOpportunity
 };

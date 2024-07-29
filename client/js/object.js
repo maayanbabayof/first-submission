@@ -25,7 +25,7 @@ function displayCardContent(card) {
             <div class="card-body">
                 <h5 class="card-title">${card.title}</h5>
                 <p class="card-text">${card.region}, ${card.city}</p>
-                <p class="card-text">Rating: ${card.rate}</p>
+                <p class="card-text">Rating: ${card.rate}★</p>
                 <p class="card-text">Date: ${card.date}</p>
             </div>
         </div>
@@ -49,8 +49,7 @@ function setUpNavLinks(card) {
     <img src="images/verify.png" alt="verify"/><span> Verified By Volunteer Membership</span><br>
     <img src="images/response.png" alt="response"/><span> Very High Response Rate</span><br><br>
     <h5>About our project</h5>
-    <p>This season, we start clearing out old pots and  recycling the growing medium, lay out new planting bags and install drip irrigation.<br>
-    The instruction of the home front command change from time to time...<span class="read"> Read more</span></p><br>
+    <p>${card.description}...<span class="read"> Read more</span></p><br>
     <h5>Ratings And Reviews</h5>
     <img src="images/stars.png" alt="stars"/><span>&nbsp;${card.reviews} reviews</span>
     <div class="reviews">All The Reviews</div><br>

@@ -11,17 +11,28 @@ const pool = mysql.createPool({
     queueLimit: 0
 });
 
+const checkRole = (roles) => {
+    return (req, res, next) => {
+        const userRole = req.body.role; // Assuming the role is included in the request body or session
+
+        if (roles.includes(userRole)) {
+            next();
+        } else {
+            res.status(403).json({ error: 'Access denied.' });
+        }
+    };
+};
 
 const createUser = async (req, res) => {
-    const { email, name, password } = req.body;
+    const { email, name, password, role } = req.body;
 
     try {
-        const userExists = await checkUserExists(email);
+        const userExists = await checkUserExists(email, name);
         if (userExists) {
             return res.status(400).json({ error: 'User already exists.' });
         }
 
-        const [result] = await pool.query('INSERT INTO tbl_119_USER (email, name, password) VALUES (?, ?, ?)', [email, name, password]);
+        const [result] = await pool.query('INSERT INTO tbl_119_USER (email, name, password, role) VALUES (?, ?, ?, ?)', [email, name, password, role]);
         console.log('User created:', result);
 
         res.status(201).json({ message: 'User created successfully.' });
@@ -60,7 +71,8 @@ const loginUser = async (req, res) => {
         const userData = {
             name: user.name,
             email: user.email,
-            profilePicture: user.profilePicture // Assuming this column exists in your DB
+            role: user.role,
+            profilePicture: user.profilePicture
         };
 
         res.status(200).json({ message: 'Login successful.', user: userData });
@@ -71,9 +83,9 @@ const loginUser = async (req, res) => {
 };
 
 
-const checkUserExists = async (email) => {
+const checkUserExists = async (email, username) => {
     try {
-        const [rows, fields] = await pool.query('SELECT * FROM tbl_119_USER WHERE email = ?', [email]);
+        const [rows, fields] = await pool.query('SELECT * FROM tbl_119_USER WHERE email = ? OR name = ?', [email, username]);
         return rows.length > 0;
     } catch (err) {
         console.error('Error checking user:', err);
@@ -81,11 +93,13 @@ const checkUserExists = async (email) => {
     }
 };
 
+
 const logoutUser = (req, res) => {
     res.status(200).json({ message: 'Logout successful.' });
 };
 
 module.exports = {
+    checkRole,
     createUser,
     getAllUsers,
     loginUser,
