@@ -27,7 +27,6 @@ function displayCardContent(card) {
         buttons = `
             <div class="button-container text-center mt-4">
                 <a class="btn btn-primary mx-2" id="editBtn">Edit</a>
-                <a class="btn btn-success mx-2" id="saveBtn">Save</a>
                 <a class="btn btn-danger mx-2" id="deleteBtn">Delete</a>
             </div>
         `;
@@ -60,14 +59,6 @@ function displayCardContent(card) {
             window.location.href = `edit-opportunity.html?id=${cardId}`;
         });
         
-
-        document.getElementById('saveBtn').addEventListener('click', () => {
-            // Implement the save functionality
-            console.log("Save button clicked");
-            // Redirect to list.html
-            window.location.href = './list.html';
-        });
-
         document.getElementById('deleteBtn').addEventListener('click', () => {
             // Implement the delete functionality
             confirmAndDeleteOpportunity(card.id);
