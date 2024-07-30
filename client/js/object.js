@@ -11,6 +11,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 displayCardContent(card);
                 setUpNavLinks(card);
                 console.log(card);
+                if (card.city) {
+                    checkWeather(card.city);
+                } else {
+                    console.error("City not found in card data");
+                }
             } else {
                 console.error("Card not found");
             }
@@ -44,6 +49,11 @@ function displayCardContent(card) {
             <div class="card-body">
                 <h5 class="card-title">${card.title}</h5>
                 <p class="card-text">${card.region}, ${card.city}</p>
+                <div class="weather">
+                    <p class="city"></p>
+                    <p class="description"></p>
+                    <p class="temp"></p>
+                </div>
                 <p class="card-text">Rating: ${card.rate}★</p>
                 <p class="card-text">Date: ${card.date}</p>
             </div>
@@ -60,7 +70,6 @@ function displayCardContent(card) {
         });
         
         document.getElementById('deleteBtn').addEventListener('click', () => {
-            // Implement the delete functionality
             confirmAndDeleteOpportunity(card.id);
         });
     }
@@ -154,4 +163,32 @@ function setUpNavLinks(card) {
 
     setActiveLink('overviewLink');
     displayContent(command);
+}
+
+const apiK = "9cd4bfd3b3cb7a36f31704dd1b71532b";
+const apiURL = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
+
+async function checkWeather(city) {
+    try {
+        if (!city) {
+            throw new Error('City name is not provided');
+        }
+        const encodedCity = encodeURIComponent(city);
+        const url = `${apiURL}${encodedCity}&appid=${apiK}`;
+        console.log('Weather API URL:', url);  // Log the URL for debugging
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const data = await response.json();
+        console.log('Weather Data:', data);  // Log the data for debugging
+        
+        document.querySelector(".description").innerText = `Weather: ` + data.weather[0].description;
+        document.querySelector(".temp").innerText = `${data.main.temp}°C`;
+    } catch (error) {
+        console.error('Error fetching weather data:', error);
+        document.querySelector(".city").innerText = "Weather data not available";
+        document.querySelector(".description").innerText = "";
+        document.querySelector(".temp").innerText = "";
+    }
 }
