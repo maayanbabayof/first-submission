@@ -1,8 +1,10 @@
+const url = 'http://localhost:3000';
+
 document.addEventListener("DOMContentLoaded", function () {
     const urlParams = new URLSearchParams(window.location.search);
     const cardId = urlParams.get('id');
 
-    fetch(`http://localhost:3000/api/opportunities/${cardId}`)
+    fetch(`${url}/api/opportunities/${cardId}`)
         .then(response => response.json())
         .then(card => {
             if (card) {
@@ -52,9 +54,12 @@ function displayCardContent(card) {
 
     if (user && user.role === 'farmer') {
         document.getElementById('editBtn').addEventListener('click', () => {
-            // Implement the edit functionality
-            console.log("Edit button clicked");
+            const urlParams = new URLSearchParams(window.location.search);
+            const cardId = urlParams.get('id');
+            console.log('cardId:', cardId);
+            window.location.href = `edit-opportunity.html?id=${cardId}`;
         });
+        
 
         document.getElementById('saveBtn').addEventListener('click', () => {
             // Implement the save functionality
@@ -65,26 +70,50 @@ function displayCardContent(card) {
 
         document.getElementById('deleteBtn').addEventListener('click', () => {
             // Implement the delete functionality
-            deleteOpportunity(card.opportunity);
+            confirmAndDeleteOpportunity(card.id);
         });
     }
 }
 
+function confirmAndDeleteOpportunity(opportunityId) {
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "Do you want to delete this opportunity?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, keep it'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            deleteOpportunity(opportunityId);
+        }
+    });
+}
+
 function deleteOpportunity(opportunityId) {
-    fetch(`http://localhost:3000/api/opportunities/${opportunityId}`, {
+    fetch(`${url}/api/opportunities/${opportunityId}`, {
         method: 'DELETE'
     })
         .then(response => response.json())
         .then(data => {
             if (data.message) {
                 console.log(data.message);
-                // Optionally, redirect to another page or update the UI
-                window.location.href = './list.html';
+                Swal.fire(
+                    'Deleted!',
+                    'The opportunity has been deleted.',
+                    'success'
+                ).then(() => {
+                    window.location.href = './list.html';
+                });
             } else {
                 console.error(data.error);
+                Swal.fire('Error', data.error, 'error');
             }
         })
-        .catch(error => console.error('Error deleting opportunity:', error));
+        .catch(error => {
+            console.error('Error deleting opportunity:', error);
+            Swal.fire('Error', 'Failed to delete opportunity. Please try again.', 'error');
+        });
 }
 
 function setActiveLink(linkId) {

@@ -1,3 +1,5 @@
+const url = 'http://localhost:3000';
+
 document.getElementById('registerForm').addEventListener('submit', async function(event) {
     event.preventDefault();
 
@@ -14,7 +16,7 @@ document.getElementById('registerForm').addEventListener('submit', async functio
     };
 
     try {
-        const response = await fetch('http://localhost:3000/api/users/create', {
+        const response = await fetch(`${url}/api/users/create`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

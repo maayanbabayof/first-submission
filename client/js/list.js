@@ -1,3 +1,4 @@
+const url = 'http://localhost:3000';
 document.addEventListener("DOMContentLoaded", function () {
     const user = JSON.parse(localStorage.getItem('user'));
     console.log('User object from localStorage:', user);
@@ -8,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (user.userID === undefined) {
             displayNoOpportunitiesMessage();
         } else {
-            fetch(`http://localhost:3000/api/opportunities/user/${user.userID}`)
+            fetch(`${url}/api/opportunities/user/${user.userID}`)
                 .then((response) => response.json())
                 .then((data) => {
                     setTitle("My Opportunities");
@@ -25,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
         // If the user is not a farmer or not logged in, redirect to a different page or show a message
         setTitle("Opportunities");
-        fetch("http://localhost:3000/api/opportunities/all")
+        fetch(`${url}/api/opportunities/all`)
             .then((response) => response.json())
             .then((data) => createAndAppendCards(data))
             .catch((error) => console.error("Error fetching data:", error));
