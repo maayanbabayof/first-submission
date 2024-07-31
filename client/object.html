@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Object Page</title>
   <link rel="stylesheet" href="css/style.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -18,12 +17,11 @@
     crossorigin="anonymous"></script>
   <script src="js/userConnect.js"></script>
 </head>
-
 <body>
   <header>
     <div class="user-welcome">
       <a href="./index.html">
-        <img alt="logo" src="images/logo.png" class="logo-image" />
+        <img alt="logo" src="images/logo.png" class="logo-image">
       </a>
       <img alt="user-profile" class="user-profile" id="user-profile-image" />
       <h5 class="title mb-0" id="user-greeting">Hello!</h5>
@@ -62,59 +60,43 @@
           </a>
         </li>
       </ul>
-
-      <img alt="search" src="images/search-icon.svg" class="search-icon" />
+      <img alt="search" src="images/search-icon.svg" class="search-icon">
     </nav>
   </header>
   <div id="objectContainer" class="container"></div>
   <nav class="navbar-nav">
     <ul>
-      <li>
-        <a id="overviewLink" href="#">
-          <p>Overview</p>
-        </a>
-      </li>
-      <li>
-        <a id="informationLink" href="#">
-          <p>Information</p>
-        </a>
-      </li>
-      <li>
-        <a id="locationLink" href="#">
-          <p>Location</p>
-        </a>
-      </li>
+      <li><a id="overviewLink" href="#"><p>Overview</p></a></li>
+      <li><a id="informationLink" href="#"><p>Information</p></a></li>
+      <li><a id="locationLink" href="#"><p>Location</p></a></li>
     </ul>
     <div id="containerObj"></div>
   </nav>
+
   <footer>
     <a href="./index.html">
-      <img src="images/book-icon.svg" alt="My Voluntree" class="footer-icon" />
+      <img src="images/book-icon.svg" alt="My Volunteer" class="footer-icon">
       <p>My Volunteer</p>
     </a>
-
     <a href="./list.html">
-      <img src="images/tree-icon.svg" alt="Opportunities" class="footer-icon" />
+      <img src="images/tree-icon.svg" alt="Opportunities" class="footer-icon">
       <p>Opportunities</p>
     </a>
-
-    <a href="./index.html" class="">
-      <img src="images/home-icon.svg" alt="Home" class="footer-icon" />
+    <a href="./index.html">
+      <img src="images/home-icon.svg" alt="Home" class="footer-icon">
       <p>Home</p>
     </a>
-
     <a href="./index.html">
-      <img src="images/heart-icon.svg" alt="Favorite" class="footer-icon" />
+      <img src="images/heart-icon.svg" alt="Favorite" class="footer-icon">
       <p>Favorite</p>
     </a>
-
     <a href="./index.html">
-      <img src="images/profile-icon.svg" alt="Profile" class="footer-icon" />
+      <img src="images/profile-icon.svg" alt="Profile" class="footer-icon">
       <p>My Profile</p>
     </a>
   </footer>
+
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="js/object.js"></script>
 </body>
-
 </html>
