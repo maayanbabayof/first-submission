@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Add New Opportunity</title>
+    <title>My Opportunities</title>
     <link rel="stylesheet" href="css/style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -12,7 +12,8 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&display=swap"
       rel="stylesheet"
     />
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/userConnect.js"></script>
+    <script src="js/applications.js"></script>
   </head>
 
   <body>
@@ -28,7 +29,7 @@
       <nav>
         <ul>
           <li>
-            <a href="./applications.html">
+            <a href="./applications.html" class="nav-link">
               <p>Applications</p>
             </a>
           </li>
@@ -57,81 +58,41 @@
       </nav>
     </header>
 
-    <div class="container">
-      <h2 class="new-opportunity-title">Add New Opportunity</h2>
-      <form id="add-opportunity-form" class="new-opportunity">
-        <input
-          type="text"
-          name="title"
-          id="title"
-          placeholder="Title"
-          required
-        />
-        <select name="region" id="region" required>
-          <option value="" disabled selected>Select Region</option>
-          <option value="North Israel">North Israel</option>
-          <option value="West Israel">West Israel</option>
-          <option value="East Israel">East Israel</option>
-          <option value="South Israel">South Israel</option>
-          <option value="Central Israel">Central Israel</option>
-        </select>
-        <input type="text" name="city" id="city" placeholder="City" required />
-        <input
-          type="url"
-          name="img"
-          id="img"
-          placeholder="Image URL"
-          required
-        />
-        <input
-          type="date"
-          name="date"
-          id="date"
-          placeholder="Starting Date"
-          required
-        />
-        <textarea
-          name="description"
-          id="description"
-          placeholder="Description"
-          required
-        ></textarea>
-        <input class="submit-button" type="submit" value="Create Opportunity" />
-      </form>
+    <div class="container-applications">
+      <h2 class="mt-7">My Applications</h2>
+
+      <div id="my-applications-grid"></div>
     </div>
 
     <footer>
-      <a href="/my-voluntree">
-        <img
+      <a href="/my-voluntree"
+        ><img
           src="images/book-icon.svg"
           alt="My Voluntree"
           class="footer-icon"
         />
         <p>My Volunteer</p>
       </a>
-      <a href="/opportunities">
-        <img
+      <a href="/opportunities"
+        ><img
           src="images/tree-icon.svg"
           alt="Opportunities"
           class="footer-icon"
         />
         <p>Opportunities</p>
       </a>
-      <a href="/">
-        <img src="images/home-icon.svg" alt="Home" class="footer-icon" />
+      <a href="/"
+        ><img src="images/home-icon.svg" alt="Home" class="footer-icon" />
         <p>Home</p>
       </a>
-      <a href="/favorite">
-        <img src="images/heart-icon.svg" alt="Favorite" class="footer-icon" />
+      <a href="/favorite"
+        ><img src="images/heart-icon.svg" alt="Favorite" class="footer-icon" />
         <p>Favorite</p>
       </a>
-      <a href="/profile">
-        <img src="images/profile-icon.svg" alt="Profile" class="footer-icon" />
+      <a href="/profile"
+        ><img src="images/profile-icon.svg" alt="Profile" class="footer-icon" />
         <p>My Profile</p>
       </a>
     </footer>
-
-    <script src="js/userConnect.js"></script>
-    <script src="js/add-opportunity.js"></script>
   </body>
 </html>
