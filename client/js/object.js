@@ -5,17 +5,22 @@ document.addEventListener("DOMContentLoaded", function () {
   const cardId = urlParams.get("id");
 
   fetch(`${url}/api/opportunities/${cardId}`)
-    .then((response) => response.json())
-    .then((card) => {
+    .then(response => response.json())
+    .then(card => {
       if (card) {
         displayCardContent(card);
         setUpNavLinks(card);
         console.log(card);
+        if (card.city) {
+          checkWeather(card.city);
+        } else {
+          console.error("City not found in card data");
+        }
       } else {
         console.error("Card not found");
       }
     })
-    .catch((error) => console.error("Error fetching data:", error));
+    .catch(error => console.error("Error fetching data:", error));
 });
 
 function displayCardContent(card) {
@@ -25,31 +30,36 @@ function displayCardContent(card) {
   let buttons = "";
   if (user && user.role === "farmer") {
     buttons = `
-            <div class="button-container text-center mt-4">
-                <a class="btn btn-primary mx-2" id="editBtn">Edit</a>
-                <a class="btn btn-danger mx-2" id="deleteBtn">Delete</a>
-            </div>
-        `;
+      <div class="button-container text-center mt-4">
+        <a class="btn btn-primary mx-2" id="editBtn">Edit</a>
+        <a class="btn btn-danger mx-2" id="deleteBtn">Delete</a>
+      </div>
+    `;
   } else {
     buttons = `
-            <div class="button-container text-center mt-4">
-                <button class="btn btn-primary mx-2" id="applyButton" role="button">Apply</button>
-            </div>
-        `;
+      <div class="button-container text-center mt-4">
+        <button class="btn btn-primary mx-2" id="applyButton" role="button">Apply</button>
+      </div>
+    `;
   }
 
   objectContainer.innerHTML = `
-        <div class="card-content mx-auto">
-            <img src="${card.img}" class="card-img-top" alt="${card.title}">
-            <div class="card-body">
-                <h5 class="card-title">${card.title}</h5>
-                <p class="card-text">${card.region}, ${card.city}</p>
-                <p class="card-text">Rating: ${card.rate}★</p>
-                <p class="card-text">Date: ${card.date}</p>
-            </div>
+    <div class="card-content mx-auto">
+      <img src="${card.img}" class="card-img-top" alt="${card.title}">
+      <div class="card-body">
+        <h5 class="card-title">${card.title}</h5>
+        <p class="card-text">${card.region}, ${card.city}</p>
+        <div class="weather">
+          <p class="city"></p>
+          <p class="description"></p>
+          <p class="temp"></p>
         </div>
-        ${buttons}
-    `;
+        <p class="card-text">Rating: ${card.rate}★</p>
+        <p class="card-text">Date: ${card.date}</p>
+      </div>
+    </div>
+    ${buttons}
+  `;
 
   if (user && user.role === "farmer") {
     document.getElementById("editBtn").addEventListener("click", () => {
@@ -77,15 +87,15 @@ function displayCardContent(card) {
           opportunityID: card.opportunity,
         }),
       })
-        .then((response) => response.json())
-        .then((data) => {
-          if (data.message) {
-            alert("נרשמת בהצלחה.");
-          } else {
-            alert("לא הצלחנו לרשום אותך, נסה שוב");
-          }
-        })
-        .catch((error) => console.error("Error:", error));
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.message) {
+          alert("נרשמת בהצלחה.");
+        } else {
+          alert("לא הצלחנו לרשום אותך, נסה שוב");
+        }
+      })
+      .catch((error) => console.error("Error:", error));
     });
   }
 }
@@ -109,30 +119,30 @@ function deleteOpportunity(opportunityId) {
   fetch(`${url}/api/opportunities/${opportunityId}`, {
     method: "DELETE",
   })
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.message) {
-        console.log(data.message);
-        Swal.fire(
-          "Deleted!",
-          "The opportunity has been deleted.",
-          "success"
-        ).then(() => {
-          window.location.href = "./list.html";
-        });
-      } else {
-        console.error(data.error);
-        Swal.fire("Error", data.error, "error");
-      }
-    })
-    .catch((error) => {
-      console.error("Error deleting opportunity:", error);
+  .then((response) => response.json())
+  .then((data) => {
+    if (data.message) {
+      console.log(data.message);
       Swal.fire(
-        "Error",
-        "Failed to delete opportunity. Please try again.",
-        "error"
-      );
-    });
+        "Deleted!",
+        "The opportunity has been deleted.",
+        "success"
+      ).then(() => {
+        window.location.href = "./list.html";
+      });
+    } else {
+      console.error(data.error);
+      Swal.fire("Error", data.error, "error");
+    }
+  })
+  .catch((error) => {
+    console.error("Error deleting opportunity:", error);
+    Swal.fire(
+      "Error",
+      "Failed to delete opportunity. Please try again.",
+      "error"
+    );
+  });
 }
 
 function setActiveLink(linkId) {
@@ -160,7 +170,7 @@ function setUpNavLinks(card) {
     <div>Jan 2024</div>
     <img src="images/blackStars.png" alt="blackStars"/>
     <p>${card.feedback}</p>
-    `;
+  `;
 
   document.getElementById("overviewLink").addEventListener("click", (e) => {
     e.preventDefault();
@@ -171,9 +181,7 @@ function setUpNavLinks(card) {
   document.getElementById("informationLink").addEventListener("click", (e) => {
     e.preventDefault();
     setActiveLink("informationLink");
-    displayContent(
-      card.informationContent || "This is the information content."
-    );
+    displayContent(card.informationContent || "This is the information content.");
   });
 
   document.getElementById("locationLink").addEventListener("click", (e) => {
@@ -184,4 +192,32 @@ function setUpNavLinks(card) {
 
   setActiveLink("overviewLink");
   displayContent(command);
+}
+
+const apiK = "9cd4bfd3b3cb7a36f31704dd1b71532b";
+const apiURL = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
+
+async function checkWeather(city) {
+  try {
+    if (!city) {
+      throw new Error('City name is not provided');
+    }
+    const encodedCity = encodeURIComponent(city);
+    const url = `${apiURL}${encodedCity}&appid=${apiK}`;
+    console.log('Weather API URL:', url);  // Log the URL for debugging
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    const data = await response.json();
+    console.log('Weather Data:', data);  // Log the data for debugging
+
+    document.querySelector(".description").innerText = `Weather: ${data.weather[0].description}`;
+    document.querySelector(".temp").innerText = `${data.main.temp}°C`;
+  } catch (error) {
+    console.error('Error fetching weather data:', error);
+    document.querySelector(".city").innerText = "Weather data not available";
+    document.querySelector(".description").innerText = "";
+    document.querySelector(".temp").innerText = "";
+  }
 }
