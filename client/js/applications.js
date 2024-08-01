@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
       .then((data) => {
         console.log(data);
         if (data.length === 0) {
-          // redirectToMyOpportunities();
         } else {
           data.forEach((card) => {
             const applicationDiv = document.createElement("div");
@@ -116,10 +115,8 @@ const handleStatusChange = (
     .then((data) => {
       if (data.message) {
         alert("Success");
-        // Hide the Approve and Reject buttons
         approveButton.style.display = "none";
         rejectButton.style.display = "none";
-        // Show the new status button
         const statusButton = document.createElement("button");
         statusButton.className = status;
         statusButton.textContent = `Status: ${

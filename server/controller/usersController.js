@@ -13,7 +13,7 @@ const pool = mysql.createPool({
 
 const checkRole = (roles) => {
   return (req, res, next) => {
-    const userRole = req.body.role; // Assuming the role is included in the request body or session
+    const userRole = req.body.role;
 
     if (roles.includes(userRole)) {
       next();
@@ -127,7 +127,6 @@ const getUserOpportunities = async (req, res) => {
   }
 };
 
-//////////////
 
 const getUserApplications = async (req, res) => {
   try {
@@ -183,7 +182,6 @@ const getUserApplications = async (req, res) => {
       params = [userId];
     }
 
-    // console.log(params, query);
     const [rows] = await pool.query(query, params);
     console.log(rows);
 

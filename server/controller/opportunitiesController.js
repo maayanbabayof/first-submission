@@ -13,7 +13,7 @@ const pool = mysql.createPool({
 
 const checkRole = (roles) => {
   return (req, res, next) => {
-    const userRole = req.body.role; // Assuming the role is included in the request body or session
+    const userRole = req.body.role;
     console.log("User role:", userRole);
     if (roles.includes(userRole)) {
       next();
@@ -86,7 +86,6 @@ const deleteOpportunity = async (req, res) => {
       "DELETE FROM tbl_119_OPPORTUNITY WHERE opportunity = ?",
       [id]
     );
-   
     if (result.affectedRows > 0) {
       res.status(200).json({ message: "Opportunity deleted successfully." });
     } else {

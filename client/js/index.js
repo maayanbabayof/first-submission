@@ -28,7 +28,6 @@ document.addEventListener("DOMContentLoaded", () => {
         .then((response) => response.json())
         .then((data) => {
           if (data.length === 0) {
-            // redirectToMyOpportunities();
           } else {
             const approvedCards = data.filter(
               (card) => card.status === "approved"

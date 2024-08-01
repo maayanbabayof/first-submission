@@ -3,7 +3,7 @@ const url = 'http://localhost:3000';
 document.addEventListener('DOMContentLoaded', function () {
     const urlParams = new URLSearchParams(window.location.search);
     const cardId = urlParams.get('id');
-    console.log('cardId:', cardId); // Should print the opportunity ID or `null`
+    console.log('cardId:', cardId);
 
     if (cardId) {
         fetch(`${url}/api/opportunities/${cardId}`)
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
                 }
-                return response.text(); // Get the raw response text first
+                return response.text();
             })
             .then(text => {
                 try {
@@ -33,28 +33,23 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('city').value = card.city;
         document.getElementById('date').value = card.date;
         document.getElementById('description').value = card.description;
-
-        // Set the selected value for the region dropdown
         const regionSelect = document.getElementById('region');
         regionSelect.value = card.region;
-
-        // Make sure the option with the value exists
         if (!Array.from(regionSelect.options).some(option => option.value === card.region)) {
             console.error('Invalid region value:', card.region);
         }
     }
 
     document.getElementById('edit-opportunity-form').addEventListener('submit', async function (event) {
-        event.preventDefault(); // Prevent the default form submission
-    
+        event.preventDefault();
+
         const user = JSON.parse(localStorage.getItem('user'));
         let userID = user?.userID || '';
         let userRole = user?.role || '';
-    
-        // Assuming cardId is defined and available
+
+
         const opportunityID = cardId;
-    
-        // Get form data
+
         const formData = {
             userID: userID,
             role: userRole,
@@ -63,11 +58,11 @@ document.addEventListener('DOMContentLoaded', function () {
             city: document.getElementById('city').value,
             date: document.getElementById('date').value,
             description: document.getElementById('description').value,
-            rate: 0, // Default to 0
-            reviews: 0 // Default to 0
+            rate: 0,
+            reviews: 0
         };
-    
-        // Show confirmation alert
+
+
         Swal.fire({
             title: 'Are you sure?',
             text: "Do you want to save changes?",
@@ -78,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
-                    // Send data to the server
+
                     const response = await fetch(`${url}/api/opportunities/${opportunityID}`, {
                         method: 'PUT',
                         headers: {
@@ -86,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         },
                         body: JSON.stringify(formData),
                     });
-    
+
                     if (response.ok) {
                         Swal.fire(
                             'Saved!',
@@ -96,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             window.location.href = `object.html?id=${opportunityID}`;
                         });
                     } else {
-                        const errorText = await response.text(); // Get raw text first
+                        const errorText = await response.text();
                         try {
                             const errorData = JSON.parse(errorText);
                             Swal.fire('Error', errorData.error, 'error');

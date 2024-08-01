@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", () => {
     ).src = `${user.profilePicture}`;
   }
 
-  ///////////////////////////
   const navLink = document
     .querySelector('a[href="./applications.html"]')
     .querySelector("p");

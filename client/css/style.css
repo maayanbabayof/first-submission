@@ -80,7 +80,7 @@ nav ul {
   padding: 10px 20px;
 }
 
-/* /////////// */
+
 .container-applications {
   max-width: 1000px;
   margin: 10px auto !important;
@@ -539,7 +539,6 @@ input {
   margin-top: 12px;
 }
 
-/* /////////////// */
 
 .register-page form input[type="email"],
 .register-page form input[type="text"],

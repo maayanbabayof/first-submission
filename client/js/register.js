@@ -14,8 +14,6 @@ document
     const address = document.getElementById("address").value;
     const age = document.getElementById("age").value;
 
-    /////////////////
-
     const user = {
       email: email,
       name: username,

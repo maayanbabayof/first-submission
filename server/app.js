@@ -9,12 +9,9 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-
 app.use("/api/users", usersRouter);
 app.use("/api/opportunities", opportunitiesRouter);
-///////////////
 app.use("/api/applications", applicationsRouter);
-
 app.get("/", (req, res) => {
   res.status(200).send("Welcome to the API.");
 });
