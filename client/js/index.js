@@ -1,5 +1,5 @@
 
-const url = "https://web2-project-pvk5.onrender.com/";
+const url = "https://web2-project-pvk5.onrender.com";
 
 document.addEventListener("DOMContentLoaded", () => {
   const user = JSON.parse(sessionStorage.getItem("user"));

@@ -1,4 +1,4 @@
-const url = "https://web2-project-pvk5.onrender.com/";
+const url = "https://web2-project-pvk5.onrender.com";
 
 document.addEventListener("DOMContentLoaded", function () {
   const urlParams = new URLSearchParams(window.location.search);
@@ -90,12 +90,27 @@ function displayCardContent(card) {
       .then((response) => response.json())
       .then((data) => {
         if (data.message) {
-          alert("נרשמת בהצלחה.");
+          Swal.fire(
+            'Success',
+            'You have successfully registered',
+            'success'
+          );
         } else {
-          alert("לא הצלחנו לרשום אותך, נסה שוב");
+          Swal.fire(
+            'Error',
+            'We could not register you, please try again',
+            'error'
+          );
         }
       })
-      .catch((error) => console.error("Error:", error));
+      .catch((error) => {
+        console.error("Error:", error);
+        Swal.fire(
+          'Error',
+          'Failed to apply. Please try again.',
+          'error'
+        );
+      });
     });
   }
 }

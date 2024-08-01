@@ -1,4 +1,4 @@
-const url = "https://web2-project-pvk5.onrender.com/";
+const url = "https://web2-project-pvk5.onrender.com";
 
 document.addEventListener("DOMContentLoaded", () => {
   const user = JSON.parse(sessionStorage.getItem("user"));
@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
       .then((data) => {
         console.log(data);
         if (data.length === 0) {
+          // Handle empty data case
         } else {
           data.forEach((card) => {
             const applicationDiv = document.createElement("div");
@@ -114,20 +115,31 @@ const handleStatusChange = (
     .then((response) => response.json())
     .then((data) => {
       if (data.message) {
-        alert("Success");
+        Swal.fire(
+          'Success',
+          `Application ${status === 'approved' ? 'approved' : 'rejected'} successfully.`,
+          'success'
+        );
         approveButton.style.display = "none";
         rejectButton.style.display = "none";
         const statusButton = document.createElement("button");
         statusButton.className = status;
-        statusButton.textContent = `Status: ${status.charAt(0).toUpperCase() + status.slice(1)
-          }`;
+        statusButton.textContent = `Status: ${status.charAt(0).toUpperCase() + status.slice(1)}`;
         approveButton.parentNode.appendChild(statusButton);
       } else {
-        alert("Failed to update application.");
+        Swal.fire(
+          'Error',
+          'Failed to update application.',
+          'error'
+        );
       }
     })
     .catch((error) => {
       console.error("Error:", error);
-      alert("An error occurred while updating the application.");
+      Swal.fire(
+        'Error',
+        'An error occurred while updating the application.',
+        'error'
+      );
     });
 };

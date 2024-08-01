@@ -1,4 +1,4 @@
-const url = "https://web2-project-pvk5.onrender.com/";
+const url = "https://web2-project-pvk5.onrender.com";
 document.addEventListener("DOMContentLoaded", function () {
   const user = JSON.parse(sessionStorage.getItem("user"));
   console.log("User object from localStorage:", user);
