@@ -38,6 +38,7 @@
           <option value="farmer">Farmer</option>
           <option value="Volunteer">Volunteer</option>
         </select>
+
         <input
           type="password"
           id="password"
@@ -45,6 +46,29 @@
           placeholder="Password"
           required
         />
+
+        <!-- ////////// -->
+
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          placeholder="Phone"
+          pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+          required
+        />
+
+        <input type="text" id="city" name="city" placeholder="City" required />
+
+        <input
+          type="text"
+          id="address"
+          name="address"
+          placeholder="Address"
+          required
+        />
+
+        <input type="number" id="age" name="age" placeholder="Age" required />
 
         <input type="submit" value="Register" />
       </form>

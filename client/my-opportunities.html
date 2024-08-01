@@ -13,6 +13,7 @@
       rel="stylesheet"
     />
     <script src="js/userConnect.js"></script>
+    <script src="js/logout.js"></script>
   </head>
 
   <body>
@@ -22,14 +23,18 @@
           <img alt="logo" src="images/logo.png" class="logo-image" />
         </a>
         <img alt="user-profile" class="user-profile" id="user-profile-image" />
-        <h5 class="title mb-0" id="user-greeting">Hello!</h5>
+        <div>
+          <h5 class="title mb-0" id="user-greeting">Hello!</h5>
+          <button id="logout-button">Logout</button>
+        </div>
       </div>
 
       <nav>
         <ul>
+          <!-- /////////////// -->
           <li>
-            <a href="/index.html" class="nav-link">
-              <p>My Volunteer</p>
+            <a href="./applications.html">
+              <p>Applications</p>
             </a>
           </li>
           <li>

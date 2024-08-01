@@ -80,6 +80,24 @@ nav ul {
   padding: 10px 20px;
 }
 
+/* /////////// */
+.container-applications {
+  max-width: 1000px;
+  margin: 10px auto !important;
+}
+
+.container-applications h2 {
+  padding: 0px 20px;
+}
+
+#my-applications-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-bottom: 10px;
+  gap: 10px;
+  margin-top: 30px;
+}
+
 h4.title {
   font-size: 20px;
   font-weight: 400;
@@ -168,6 +186,12 @@ h5.title {
   .cardsGrid {
     grid-template-columns: 1fr 1fr 1fr;
   }
+
+  .opportunities-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
 }
 
 @media screen and (max-width: 800px) {
@@ -204,6 +228,16 @@ h5.title {
   .cardsGrid {
     grid-template-columns: 1fr;
   }
+
+  .opportunities-list {
+    display: flex;
+    overflow-x: scroll;
+    gap: 12px;
+  }
+
+  .opportunity-div {
+    max-width: 380px;
+  }
 }
 
 .regions-list {
@@ -227,9 +261,6 @@ h5.title {
 }
 
 .opportunities-list {
-  display: flex;
-  overflow-x: scroll;
-  gap: 10px;
   scrollbar-width: none;
   padding: 14px;
   margin: -14px;
@@ -241,7 +272,6 @@ h5.title {
   gap: 20px;
   box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
   border-radius: 25px;
-  max-width: 380px;
   min-width: 380px;
 }
 
@@ -509,8 +539,12 @@ input {
   margin-top: 12px;
 }
 
+/* /////////////// */
+
 .register-page form input[type="email"],
 .register-page form input[type="text"],
+.register-page form input[type="tel"],
+.register-page form input[type="number"],
 .register-page form input[type="password"] {
   padding: 10px;
   margin: 10px 0;
@@ -712,4 +746,62 @@ input {
 .cardsGrid {
   display: grid;
   gap: 15px;
+}
+
+.application-div {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 10px 20px;
+}
+
+.application-div .title {
+  font-size: 16px;
+}
+
+.application-div .description {
+  font-size: 15px;
+  margin-top: 5px;
+  line-height: 1.5em;
+  font-weight: 300;
+}
+
+.application-div .buttons {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 7px;
+}
+
+.application-div .approve {
+  padding: 6px 9px;
+  background-color: #4caf50;
+  border: 0px;
+  color: white;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  border-radius: 6px;
+  width: fit-content;
+  cursor: pointer;
+}
+
+.application-div .reject {
+  padding: 6px 9px;
+  background-color: #d64c4c;
+  border: 0px;
+  color: white;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  border-radius: 6px;
+  width: fit-content;
+  cursor: pointer;
+}
+
+#logout-button {
+  appearance: none;
+  font-size: 13px;
+  margin-top: -1px;
+  border: none;
+  background: transparent;
+  display: none;
 }

@@ -1,105 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Edit Opportunity</title>
-  <link rel="stylesheet" href="css/style.css" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <head>
+    <meta charset="UTF-8" />
+    <title>Edit Opportunity</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&display=swap"
-    rel="stylesheet"
-  />
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-</head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/logout.js"></script>
+  </head>
 
-<body>
-  <header>
-    <div class="user-welcome">
-      <a href="index.html">
-        <img alt="logo" src="images/logo.png" class="logo-image" />
-      </a>
-      <img alt="user-profile" class="user-profile" id="user-profile-image" />
-      <h5 class="title mb-0" id="user-greeting">Hello!</h5>
+  <body>
+    <header>
+      <div class="user-welcome">
+        <a href="index.html">
+          <img alt="logo" src="images/logo.png" class="logo-image" />
+        </a>
+        <img alt="user-profile" class="user-profile" id="user-profile-image" />
+        <h5 class="title mb-0" id="user-greeting">Hello!</h5>
+        <div>
+          <h5 class="title mb-0" id="user-greeting">Hello!</h5>
+          <button id="logout-button">Logout</button>
+        </div>
+      </div>
+
+      <nav>
+        <ul>
+          <!-- /////////////// -->
+          <li>
+            <a href="./applications.html">
+              <p>Applications</p>
+            </a>
+          </li>
+          <li>
+            <a href="/" class="nav-link">
+              <p>Opportunities</p>
+            </a>
+          </li>
+          <li>
+            <a href="/index.html" class="nav-link">
+              <p>Home</p>
+            </a>
+          </li>
+          <li>
+            <a href="/index.html" class="nav-link">
+              <p>Favorite</p>
+            </a>
+          </li>
+          <li>
+            <a href="/index.html" class="nav-link">
+              <p>My Profile</p>
+            </a>
+          </li>
+        </ul>
+        <img alt="search" src="images/search-icon.svg" class="search-icon" />
+      </nav>
+    </header>
+
+    <div class="container">
+      <h2 class="new-opportunity-title">Edit Opportunity</h2>
+      <form id="edit-opportunity-form" class="new-opportunity">
+        <input
+          type="text"
+          name="title"
+          id="title"
+          placeholder="Title"
+          required
+        />
+        <select name="region" id="region" required>
+          <option value="" disabled selected>Select Region</option>
+          <option value="North Israel">North Israel</option>
+          <option value="West Israel">West Israel</option>
+          <option value="East Israel">East Israel</option>
+          <option value="South Israel">South Israel</option>
+          <option value="Central Israel">Central Israel</option>
+        </select>
+        <input type="text" name="city" id="city" placeholder="City" required />
+        <input
+          type="date"
+          name="date"
+          id="date"
+          placeholder="Starting Date"
+          required
+        />
+        <textarea
+          name="description"
+          id="description"
+          placeholder="Description"
+          required
+        ></textarea>
+        <input class="submit-button" type="submit" value="Save changes" />
+      </form>
     </div>
 
-    <nav>
-      <ul>
-        <li>
-          <a href="/index.html" class="nav-link">
-            <p>My Volunteer</p>
-          </a>
-        </li>
-        <li>
-          <a href="/" class="nav-link">
-            <p>Opportunities</p>
-          </a>
-        </li>
-        <li>
-          <a href="/index.html" class="nav-link">
-            <p>Home</p>
-          </a>
-        </li>
-        <li>
-          <a href="/index.html" class="nav-link">
-            <p>Favorite</p>
-          </a>
-        </li>
-        <li>
-          <a href="/index.html" class="nav-link">
-            <p>My Profile</p>
-          </a>
-        </li>
-      </ul>
-      <img alt="search" src="images/search-icon.svg" class="search-icon" />
-    </nav>
-  </header>
+    <footer>
+      <a href="/my-voluntree">
+        <img
+          src="images/book-icon.svg"
+          alt="My Voluntree"
+          class="footer-icon"
+        />
+        <p>My Volunteer</p>
+      </a>
+      <a href="/opportunities">
+        <img
+          src="images/tree-icon.svg"
+          alt="Opportunities"
+          class="footer-icon"
+        />
+        <p>Opportunities</p>
+      </a>
+      <a href="/">
+        <img src="images/home-icon.svg" alt="Home" class="footer-icon" />
+        <p>Home</p>
+      </a>
+      <a href="/favorite">
+        <img src="images/heart-icon.svg" alt="Favorite" class="footer-icon" />
+        <p>Favorite</p>
+      </a>
+      <a href="/profile">
+        <img src="images/profile-icon.svg" alt="Profile" class="footer-icon" />
+        <p>My Profile</p>
+      </a>
+    </footer>
 
-  <div class="container">
-    <h2 class="new-opportunity-title">Edit Opportunity</h2>
-    <form id="edit-opportunity-form" class="new-opportunity">
-      <input type="text" name="title" id="title" placeholder="Title" required />
-      <select name="region" id="region" required>
-        <option value="" disabled selected>Select Region</option>
-        <option value="North Israel">North Israel</option>
-        <option value="West Israel">West Israel</option>
-        <option value="East Israel">East Israel</option>
-        <option value="South Israel">South Israel</option>
-        <option value="Central Israel">Central Israel</option>
-      </select>
-      <input type="text" name="city" id="city" placeholder="City" required />
-      <input type="date" name="date" id="date" placeholder="Starting Date" required />
-      <textarea name="description" id="description" placeholder="Description" required></textarea>
-      <input class="submit-button" type="submit" value="Save changes" />
-    </form>
-  </div>
-
-  <footer>
-    <a href="/my-voluntree">
-      <img src="images/book-icon.svg" alt="My Voluntree" class="footer-icon" />
-      <p>My Volunteer</p>
-    </a>
-    <a href="/opportunities">
-      <img src="images/tree-icon.svg" alt="Opportunities" class="footer-icon" />
-      <p>Opportunities</p>
-    </a>
-    <a href="/">
-      <img src="images/home-icon.svg" alt="Home" class="footer-icon" />
-      <p>Home</p>
-    </a>
-    <a href="/favorite">
-      <img src="images/heart-icon.svg" alt="Favorite" class="footer-icon" />
-      <p>Favorite</p>
-    </a>
-    <a href="/profile">
-      <img src="images/profile-icon.svg" alt="Profile" class="footer-icon" />
-      <p>My Profile</p>
-    </a>
-  </footer>
-
-  <script src="js/userConnect.js"></script>
-  <script src="js/edit-opportunity.js"></script>
-</body>
+    <script src="js/userConnect.js"></script>
+    <script src="js/edit-opportunity.js"></script>
+  </body>
 </html>
