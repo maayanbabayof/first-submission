@@ -14,6 +14,9 @@
 </head>
 
 <body>
+  <a href="./index.html" class="logo-link">
+    <div class="logo-image-login-register"></div>
+  </a>
   <div class="register-page">
     <h2>Register</h2>
     <form id="registerForm">
@@ -32,50 +35,12 @@
       <input type="submit" value="Register" />
     </form>
 
-        <select name="role" id="role" required>
-          <option value="">Select Role</option>
-          <option value="farmer">Farmer</option>
-          <option value="Volunteer">Volunteer</option>
-        </select>
 
-        <input
-          type="password"
-          id="password"
-          name="password"
-          placeholder="Password"
-          required
-        />
+    <p class="mt-5">
+      Already have an account? <a href="login.html">Login here</a>
+    </p>
+  </div>
+  <script src="js/register.js"></script>
+</body>
 
-        <!-- ////////// -->
-
-        <input
-          type="tel"
-          id="phone"
-          name="phone"
-          placeholder="Phone"
-          pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-          required
-        />
-
-        <input type="text" id="city" name="city" placeholder="City" required />
-
-        <input
-          type="text"
-          id="address"
-          name="address"
-          placeholder="Address"
-          required
-        />
-
-        <input type="number" id="age" name="age" placeholder="Age" required />
-
-        <input type="submit" value="Register" />
-      </form>
-
-      <p class="mt-5">
-        Already have an account? <a href="login.html">Login here</a>
-      </p>
-    </div>
-    <script src="js/register.js"></script>
-  </body>
 </html>

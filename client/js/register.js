@@ -1,4 +1,4 @@
-const url = "http://localhost:3000";
+const url = "https://web2-project-pvk5.onrender.com/";
 
 document
   .getElementById("registerForm")

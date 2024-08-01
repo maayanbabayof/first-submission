@@ -1,4 +1,4 @@
-const url = "http://localhost:3000";
+const url = "https://web2-project-pvk5.onrender.com/";
 document.addEventListener("DOMContentLoaded", function () {
   const user = JSON.parse(sessionStorage.getItem("user"));
   console.log("User object from localStorage:", user);
@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .then((response) => response.json())
         .then((data) => {
           setTitle("My Opportunities");
-          console.log(data.length); // Log the fetched data
+          console.log(data.length);
           if (data.length === undefined) {
             displayNoOpportunitiesMessage();
           } else {
@@ -24,7 +24,6 @@ document.addEventListener("DOMContentLoaded", function () {
         .catch((error) => console.error("Error fetching data:", error));
     }
   } else {
-    // If the user is not a farmer or not logged in, redirect to a different page or show a message
     setTitle("Opportunities");
     fetch(`${url}/api/opportunities/all`)
       .then((response) => response.json())

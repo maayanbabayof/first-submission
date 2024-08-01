@@ -78,25 +78,26 @@ const createOpportunity = async (req, res) => {
   }
 };
 
-const deleteOpportunity = async (req, res) => {
+async function deleteOpportunity(req, res) {
   const { id } = req.params;
 
   try {
-    const [result] = await pool.query(
-      "DELETE FROM tbl_119_OPPORTUNITY WHERE opportunity = ?",
-      [id]
-    );
-    if (result.affectedRows > 0) {
-      res.status(200).json({ message: "Opportunity deleted successfully." });
-    } else {
-      res.status(404).json({ error: "Opportunity not found." });
-    }
-  } catch (err) {
-    console.error("Error deleting opportunity:", err);
-    res.status(500).json({ error: "Failed to delete opportunity." });
-  }
-};
+    // Delete related records in tbl_119_APPLICATIONS
+    await pool.query('DELETE FROM tbl_119_APPLICATIONS WHERE opportunityID = ?', [id]);
 
+    // Delete the opportunity
+    const [result] = await pool.query('DELETE FROM tbl_119_OPPORTUNITY WHERE opportunity = ?', [id]);
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ message: 'Opportunity not found' });
+    }
+
+    res.status(200).json({ message: 'Opportunity deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting opportunity:', error);
+    res.status(500).json({ error: 'Failed to delete opportunity' });
+  }
+}
 const updateOpportunity = async (req, res) => {
   const { id } = req.params;
   const { title, region, city, date, description } = req.body;

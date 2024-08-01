@@ -1,4 +1,4 @@
-const url = "http://localhost:3000";
+const url = "https://web2-project-pvk5.onrender.com/";
 document
   .getElementById("login-form")
   .addEventListener("submit", async function (e) {
@@ -19,7 +19,7 @@ document
       const data = await response.json();
 
       if (response.ok) {
-        sessionStorage.setItem("user", JSON.stringify(data.user)); // Use sessionStorage instead of localStorage
+        sessionStorage.setItem("user", JSON.stringify(data.user));
         window.location.href = "index.html";
       } else {
         alert(data.error);

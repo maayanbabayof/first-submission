@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", function () {
   document
     .getElementById("logout-button")
     .addEventListener("click", function () {
-      // Clear session storage and redirect to the login page
       sessionStorage.removeItem("user");
       window.location.href = "login.html";
     });

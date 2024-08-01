@@ -1,14 +1,13 @@
-const url = "http://localhost:3000";
+const url = "https://web2-project-pvk5.onrender.com/";
 
 document.addEventListener("DOMContentLoaded", function () {
   document
     .getElementById("add-opportunity-form")
     .addEventListener("submit", async function (event) {
-      event.preventDefault(); // Prevent the default form submission
+      event.preventDefault();
       const user = JSON.parse(sessionStorage.getItem("user"));
       let userID = user.userID ? user.userID : "";
       let userRole = user.role ? user.role : "";
-      // Get form data
       const formData = {
         userID: userID,
         role: userRole,
@@ -18,11 +17,11 @@ document.addEventListener("DOMContentLoaded", function () {
         img: document.getElementById("img").value,
         date: document.getElementById("date").value,
         description: document.getElementById("description").value,
-        rate: 0, // Default to 0
-        reviews: 0, // Default to 0
+        rate: 0,
+        reviews: 0,
       };
 
-      // Show confirmation alert
+
       Swal.fire({
         title: "Are you sure?",
         text: "Do you want to create this opportunity?",
@@ -34,7 +33,6 @@ document.addEventListener("DOMContentLoaded", function () {
         if (result.isConfirmed) {
           try {
             console.log("Creating opportunity:", formData);
-            // Send data to the server
             const response = await fetch(`${url}/api/opportunities/create`, {
               method: "POST",
               headers: {
@@ -44,7 +42,6 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
             if (response.ok) {
-              // Handle successful creation (e.g., redirect to the opportunities list)
               Swal.fire(
                 "Saved!",
                 "Your opportunity has been created.",

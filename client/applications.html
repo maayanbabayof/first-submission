@@ -1,102 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>My Opportunities</title>
-    <link rel="stylesheet" href="css/style.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&display=swap"
-      rel="stylesheet"
-    />
-    <script src="js/userConnect.js"></script>
-    <script src="js/applications.js"></script>
-    <script src="js/logout.js"></script>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <title>My Opportunities</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <body>
-    <header>
-      <div class="user-welcome">
-        <a href="index.html">
-          <img alt="logo" src="images/logo.png" class="logo-image" />
-        </a>
-        <img alt="user-profile" class="user-profile" id="user-profile-image" />
-        <div>
-          <h5 class="title mb-0" id="user-greeting">Hello!</h5>
-          <button id="logout-button">Logout</button>
-        </div>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&display=swap"
+    rel="stylesheet" />
+  <script src="js/userConnect.js"></script>
+  <script src="js/applications.js"></script>
+  <script src="js/logout.js"></script>
+</head>
+
+<body>
+  <header>
+    <div class="user-welcome">
+      <a href="index.html">
+        <div class="logo-image"></div>
+      </a>
+      <img alt="user-profile" class="user-profile" id="user-profile-image" />
+      <div>
+        <h5 class="title mb-0" id="user-greeting">Hello!</h5>
+        <button id="logout-button">Logout</button>
       </div>
-
-      <nav>
-        <ul>
-          <li>
-            <a href="./applications.html" class="nav-link">
-              <p>Applications</p>
-            </a>
-          </li>
-          <li>
-            <a href="list.html" class="nav-link">
-              <p>Opportunities</p>
-            </a>
-          </li>
-          <li>
-            <a href="/index.html" class="nav-link">
-              <p>Home</p>
-            </a>
-          </li>
-          <li>
-            <a href="/index.html" class="nav-link">
-              <p>Favorite</p>
-            </a>
-          </li>
-          <li>
-            <a href="/index.html" class="nav-link">
-              <p>My Profile</p>
-            </a>
-          </li>
-        </ul>
-        <img alt="search" src="images/search-icon.svg" class="search-icon" />
-      </nav>
-    </header>
-
-    <div class="container-applications">
-      <h2 class="mt-7">My Applications</h2>
-
-      <div id="my-applications-grid"></div>
     </div>
 
-    <footer>
-      <a href="/my-voluntree"
-        ><img
-          src="images/book-icon.svg"
-          alt="My Voluntree"
-          class="footer-icon"
-        />
-        <p>My Volunteer</p>
-      </a>
-      <a href="/opportunities"
-        ><img
-          src="images/tree-icon.svg"
-          alt="Opportunities"
-          class="footer-icon"
-        />
-        <p>Opportunities</p>
-      </a>
-      <a href="/"
-        ><img src="images/home-icon.svg" alt="Home" class="footer-icon" />
-        <p>Home</p>
-      </a>
-      <a href="/favorite"
-        ><img src="images/heart-icon.svg" alt="Favorite" class="footer-icon" />
-        <p>Favorite</p>
-      </a>
-      <a href="/profile"
-        ><img src="images/profile-icon.svg" alt="Profile" class="footer-icon" />
-        <p>My Profile</p>
-      </a>
-    </footer>
-  </body>
+    <nav>
+      <ul>
+        <li>
+          <a href="./applications.html" class="nav-link">
+            <p>Applications</p>
+          </a>
+        </li>
+        <li>
+          <a href="list.html" class="nav-link">
+            <p>Opportunities</p>
+          </a>
+        </li>
+        <li>
+          <a href="/index.html" class="nav-link">
+            <p>Home</p>
+          </a>
+        </li>
+        <li>
+          <a href="/index.html" class="nav-link">
+            <p>Favorite</p>
+          </a>
+        </li>
+        <li>
+          <a href="/index.html" class="nav-link">
+            <p>My Profile</p>
+          </a>
+        </li>
+      </ul>
+      <img alt="search" src="images/search-icon.svg" class="search-icon" />
+    </nav>
+  </header>
+
+  <div class="container-applications">
+    <h2 class="mt-7">My Applications</h2>
+
+    <div id="my-applications-grid"></div>
+  </div>
+
+  <footer>
+    <a href="./applications.html">
+      <div class="footer-icon book-icon"></div>
+      <p>Applications</p>
+    </a>
+    <a href="./list.html">
+      <div class="footer-icon tree-icon"></div>
+      <p>Opportunities</p>
+    </a>
+    <a href="./index.html">
+      <div class="footer-icon home-icon active"></div>
+      <p>Home</p>
+    </a>
+    <a href="./index.html">
+      <div class="footer-icon heart-icon"></div>
+      <p>Favorite</p>
+    </a>
+    <a href="./index.html">
+      <div class="footer-icon profile-icon"></div>
+      <p>My Profile</p>
+    </a>
+  </footer>
+</body>
+
 </html>

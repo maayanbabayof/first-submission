@@ -1,4 +1,4 @@
-const url = "http://localhost:3000";
+const url = "https://web2-project-pvk5.onrender.com/";
 
 document.addEventListener("DOMContentLoaded", function () {
   const urlParams = new URLSearchParams(window.location.search);
@@ -31,7 +31,6 @@ function displayCardContent(card) {
             </div>
         `;
   } else {
-    ///////////////
     buttons = `
             <div class="button-container text-center mt-4">
                 <button class="btn btn-primary mx-2" id="applyButton" role="button">Apply</button>
@@ -62,7 +61,7 @@ function displayCardContent(card) {
 
     document.getElementById("deleteBtn").addEventListener("click", () => {
       const urlParams = new URLSearchParams(window.location.search);
-            confirmAndDeleteOpportunity(urlParams.get("id"));
+      confirmAndDeleteOpportunity(urlParams.get("id"));
     });
   } else {
     const applyButton = document.getElementById("applyButton");
